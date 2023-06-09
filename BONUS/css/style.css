@@ -1,0 +1,49 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+/* style body */
+body{
+    background-color: darkgrey;
+}
+
+/* style struttura HTML */
+.content{
+    width: 75%;
+    margin: 0 auto;
+    padding: 25px;
+    background-color: cornflowerblue;
+    color: #fff;
+    border-radius: 20px;
+}
+
+.list-unstyled li{
+    padding: 25px 0;
+    border-bottom: 1px solid whitesmoke;
+}
+
+/* style campi input */
+
+.input-group{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.input-field{
+    width: 80%;
+}
+
+.input-task{
+    width: 100%;
+    border: none;
+    padding: 5px 5px;
+
+}
+
+.task-done{
+    text-decoration: line-through;
+}
+

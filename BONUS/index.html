@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- Collegamento a Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <!-- Collegamento a Bootstrap -->
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+
+        <!-- Collegamento a CSS -->
+        <link rel="stylesheet" href="./css/style.css" />
+
+        <title>TooBoo List</title>
+    </head>
+
+    <body>
+        <!-- Creazione di un div con id "app" per collegarlo a Vue JS -->
+        <div id="app">
+            <!-- Contenitore generale degli elementi della pagina -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="text-center">
+                            <h1 class="mt-4">{{ title }}</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="content">
+                            <!-- Titolo -->
+                            <h3><strong>La mia lista delle cose da fare</strong></h3>
+                            <hr>
+                            <!-- Lista delle attività -->
+                            <ul class="list-unstyled">
+                                <!-- Verifica se non ci sono attività e mostra un messaggio -->
+                                <div v-if="tasks.length === 0">
+                                    <h4 class="text-center">Non ci sono attività da fare oggi! Goditi la giornata!</h4>
+                                </div>
+                                <!-- Itera sulle attività e mostrale -->
+                                <li v-for="(task, index) in tasks">
+                                    <div class="d-flex justify-content-between">
+                                        <!-- Applica la classe "task-done" se l'attività è completata -->
+                                        <div :class="task.done === true ? 'task-done' : ''">
+                                            <!-- Se la condizione e' vera abilito l'input per la modifica -->
+                                            <div v-if="task.edit_enabled">
+                                                <input type="text" class="input-task" name="edit_task" id="edit_task" v-model="task.text" @keyup.enter="editTask(index)">
+                                            </div>
+                                            <!-- altrimenti visualizzo la task -->
+                                            <div v-else>
+                                                {{ task.text }}
+                                            </div>
+                                        </div>
+                                        <div>
+                                            <!-- Crea bottoni e assegna loro la classe "btn" in base alla condizione e l'evento di click -->
+                                            <!-- Pulsante di check o croce -->
+                                            <button class="me-1 btn btn-sm" :class="task.done ? 'btn-dark' : 'btn-success'" @click="changeTaskStatus(index)">
+                                                <i class="fas" :class="task.done ? 'fa-x' : 'fa-check'"></i>
+                                            </button>
+                                            <!-- Bottone per modificare la singola task e al clic parte l'evento EDITTASK-->
+                                            <button class="me-1 btn btn-sm btn-warning" @click="editTask(index)">
+                                                <i class="fas fa-edit"></i>
+                                            </button>
+                                            <!-- Pulsante per rimuovere l'attività -->
+                                            <button class="btn btn-sm btn-danger" @click="deleteTask(index)">
+                                                <i class="fas fa-trash"></i>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                            <!-- Input per aggiungere nuove attività -->
+                            <div class="input-group mt-4">
+                                <div class="input-field">
+                                    <input type="text" class="input-task" placeholder="Aggiungi nuova attività" name="newTask" id="newTask" v-model="newTask" @keyup.enter="addTask">
+                                </div>
+                                <div class="input-button">
+                                    <button class="btn btn-sm btn-dark" @click="addTask()">
+                                        <i class="fas fa-plus mr-2"></i>
+                                        Aggiungi Task
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Collegamento a Vue JS -->
+        <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+        <!-- collegamento a JS -->
+        <script src="./js/script.js"></script>
+    </body>
+
+</html>
