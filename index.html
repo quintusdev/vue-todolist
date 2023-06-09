@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <!-- link Font Awesome -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+        <!-- link Bootstrap -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.0.1/js/bootstrap.min.js" integrity="sha512-EKWWs1ZcA2ZY9lbLISPz8aGR2+L7JVYqBAYTq5AXgBkSjRSuQEGqWx8R1zAX16KdXPaCjOCaKE8MCpU0wcHlHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+        <!-- link CSS-->
+        <link rel="stylesheet" href="./css/style.css" />
+
+        <title>TooBoo List</title>
+    </head>
+
+    <body>
+        <!-- cre un div con id app per richiamarlo con Vue JS -->
+        <div id="app">
+            <!-- contenitore generale degli elementi della pagina -->
+            <div class="container">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="text-center">
+                            <h1 class="mt-4">{{ title-app }}</h1>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <div class="content">
+                            <h3><strong>La mia Todolist</strong></h3>
+                            <hr>
+                            <!-- lista contenente le tasks -->
+                            <ul class="list-unstyled">
+                                <div v-if="tasks.length === 0">
+                                    <h4 class="text-center"></h4>
+                                </div>
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- link script vue js-->
+        <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+        <!--link script JS-->
+        <script text="text/javascript" src="./js/script.js"></script>
+    </body>
+
+</html>
